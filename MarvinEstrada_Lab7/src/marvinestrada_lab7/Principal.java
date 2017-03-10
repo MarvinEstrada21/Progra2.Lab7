@@ -1,10 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package marvinestrada_lab7;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -1003,7 +1003,7 @@ public class Principal extends javax.swing.JFrame {
     private void bt_guardar_dragonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardar_dragonActionPerformed
         String nombre, nickaname;
         double ataque, defensa, salud, puntos;
-        //try {
+        try {
             nombre = tf_nombre_dragon.getText();
             nickaname = tf_nickname_dragon.getText();
             ataque = Double.parseDouble(tf_ataque_dragon.getText());
@@ -1014,14 +1014,17 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El dragon ha sido creado exitosamente");
             
             DefaultTableModel modelo = (DefaultTableModel) tabla_bestias.getModel();
-            Object[] newrow = {tf_nombre_dragon.getText(),
-                                tf_nickname_dragon.getText(),
-                                Double.parseDouble(tf_ataque_dragon.getText()),
-                                Double.parseDouble(tf_defensa_dragon.getText()),
-                                Double.parseDouble(tf_salud_dragon.getText()),
-                                0};
+            Object[] newrow = {nombre, nickaname, ataque, defensa, salud, puntos};
             modelo.addRow(newrow);
             tabla_bestias.setModel(modelo);
+            
+            AdminGuerreros war = new AdminGuerreros("./Guerreros.cbm");
+            for (int i = 0; i < lista.size(); i++) {
+                war.cargarArchivo();
+                war.setGuerrero(((Guerrero)lista.get(i)));
+                war.escribirArchivo();
+                Guardar(lista);
+            }
             
             tf_nombre_dragon.setText("");
             tf_nickname_dragon.setText("");
@@ -1029,9 +1032,9 @@ public class Principal extends javax.swing.JFrame {
             tf_defensa_dragon.setText("");
             tf_salud_dragon.setText("");
             tf_puntos_dragon.setText("");
-        //} catch (Exception e) {
-          //  JOptionPane.showMessageDialog(this, "Ha ocurrido un error y no se guardaron los datos");
-        //}
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Ha ocurrido un error y no se guardaron los datos");
+        }
     }//GEN-LAST:event_bt_guardar_dragonActionPerformed
 
     private void bt_guardar_fenixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardar_fenixActionPerformed
@@ -1048,14 +1051,17 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El fenix ha sido creado exitosamente");
             
             DefaultTableModel modelo = (DefaultTableModel) tabla_bestias.getModel();
-            Object[] newrow = {tf_nombre_fenix.getText(),
-                                tf_nickname_fenix.getText(),
-                                Double.parseDouble(tf_ataque_fenix.getText()),
-                                Double.parseDouble(tf_defensa_fenix.getText()),
-                                Double.parseDouble(tf_salud_fenix.getText()),
-                                Double.parseDouble(tf_puntos_fenix.getText())};
+            Object[] newrow = {nombre, nickaname, ataque, defensa, salud, puntos};
             modelo.addRow(newrow);
             tabla_bestias.setModel(modelo);
+            
+            AdminGuerreros war = new AdminGuerreros("./Guerreros.cbm");
+            for (int i = 0; i < lista_alumnos.size(); i++) {
+                war.cargarArchivo();
+                war.setGuerrero(((Guerrero)lista.get(i)));
+                war.escribirArchivo();
+                Guardar(lista);
+            }
             
             tf_nombre_fenix.setText("");
             tf_nickname_fenix.setText("");
@@ -1082,14 +1088,17 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El hombre lobo ha sido creado exitosamente");
             
             DefaultTableModel modelo = (DefaultTableModel) tabla_bestias.getModel();
-            Object[] newrow = {tf_nombre_hl.getText(),
-                                tf_nickname_hl.getText(),
-                                Double.parseDouble(tf_ataque_hl.getText()),
-                                Double.parseDouble(tf_defensa_hl.getText()),
-                                Double.parseDouble(tf_salud_hl.getText()),
-                                Double.parseDouble(tf_puntos_hl.getText())};
+            Object[] newrow = {nombre, nickaname, ataque, defensa, salud, puntos};
             modelo.addRow(newrow);
             tabla_bestias.setModel(modelo);
+            
+            AdminGuerreros war = new AdminGuerreros("./Guerreros.cbm");
+            for (int i = 0; i < lista.size(); i++) {
+                war.cargarArchivo();
+                war.setGuerrero(((Guerrero)lista.get(i)));
+                war.escribirArchivo();
+                Guardar(lista);
+            }
             
             tf_nombre_hl.setText("");
             tf_nickname_hl.setText("");
@@ -1116,14 +1125,17 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El minotauro ha sido creado exitosamente");
             
             DefaultTableModel modelo = (DefaultTableModel) tabla_bestias.getModel();
-            Object[] newrow = {tf_nombre_minotauro.getText(),
-                                tf_nickname_minotauro.getText(),
-                                Double.parseDouble(tf_ataque_minotauro.getText()),
-                                Double.parseDouble(tf_defensa_minotauro.getText()),
-                                Double.parseDouble(tf_salud_minotauro.getText()),
-                                Double.parseDouble(tf_puntos_minotauro.getText())};
+            Object[] newrow = {nombre, nickaname, ataque, defensa, salud, puntos};
             modelo.addRow(newrow);
             tabla_bestias.setModel(modelo);
+            
+            AdminGuerreros war = new AdminGuerreros("./Guerreros.cbm");
+            for (int i = 0; i < lista.size(); i++) {
+                war.cargarArchivo();
+                war.setGuerrero(((Guerrero)lista.get(i)));
+                war.escribirArchivo();
+                Guardar(lista);
+            }
             
             tf_nombre_minotauro.setText("");
             tf_nickname_minotauro.setText("");
@@ -1154,17 +1166,17 @@ public class Principal extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "El alumno ha sido creado exitosamente");
             
             DefaultTableModel modelo = (DefaultTableModel) tabla_alumno.getModel();
-            Object[] newrow = {tf_nombre_alumno.getText(),
-                                tf_nickname_alumno.getText(),
-                                Double.parseDouble(tf_ataque_alumno.getText()),
-                                Double.parseDouble(tf_defensa_alumno.getText()),
-                                Double.parseDouble(tf_salud_alumno.getText()),
-                                Double.parseDouble(tf_puntos_alumno.getText()),
-                                Integer.parseInt(tf_cuenta_alumno.getText()),
-                                tf_carrera_alumno.getText(),
-                                Integer.parseInt(tf_edad_alumno.getText())};
+            Object[] newrow = {nombre, nickaname, ataque, defensa, salud, puntos, cuenta, carrera, edad};
             modelo.addRow(newrow);
             tabla_alumno.setModel(modelo);
+            
+            AdminAlumnos al = new AdminAlumnos("./Alumnos.cbm");
+            for (int i = 0; i < lista_alumnos.size(); i++) {
+                al.cargarArchivo();
+                al.setAlumno(((Alumnos)lista_alumnos.get(i)));
+                al.escribirArchivo();
+                Guardar(lista);
+            }
             
             tf_nombre_alumno.setText("");
             tf_nickname_alumno.setText("");
@@ -1221,8 +1233,8 @@ public class Principal extends javax.swing.JFrame {
         defensa = Double.parseDouble(tf_defensa_bestia.getText());
         salud = Double.parseDouble(tf_salud_bestia.getText());
         puntos = Double.parseDouble(tf_puntos_bestia.getText());
-        lista.add(new Guerrero(nombre, nickaname, ataque, defensa, salud, puntos));
-        Guerrero gu = new Guerrero();
+        lista.add(new Bestias(nombre, nickaname, ataque, defensa, salud, puntos));
+        Guerrero gu = new Bestias();
         gu.setNombre(nombre);
         gu.setNickname(nickaname);
         gu.setAtaque(ataque);
@@ -1343,6 +1355,28 @@ public class Principal extends javax.swing.JFrame {
                 new Principal().setVisible(true);
             }
         });
+    }
+    
+    public void Guardar(ArrayList lista) {
+        try {
+            FileOutputStream archivotxt = new FileOutputStream("./usuario.cbm");
+            ObjectOutputStream pollo = new ObjectOutputStream(archivotxt);
+            pollo.writeObject(lista);
+            pollo.close();
+        } catch (IOException ex) {
+        }
+    }
+
+    public void Abrir() {
+        try {
+            FileInputStream entrada = new FileInputStream("./usuario.cbm");
+            ObjectInputStream objeto = new ObjectInputStream(entrada);
+            try {
+                lista= (ArrayList<Guerrero>)objeto.readObject();
+            } catch (ClassNotFoundException ex) {
+            }
+        } catch (IOException ex) {
+        }
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

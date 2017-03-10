@@ -15,7 +15,14 @@ public class Fenix extends Bestias{
     }
 
     @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atacar(Guerrero guerrero) {
+        double salud_against, ataque, ataque1, ataque2, op_salud;
+        ataque = guerrero.getAtaque() * 0.75;
+        salud_against = (guerrero.getAtaque() + ataque) - guerrero.getDefensa();
+        op_salud = guerrero.getSalud() - salud_against;
+        guerrero.setSalud(op_salud);
+        ataque1 = guerrero.getAtaque() * 0.05;
+        ataque2 = guerrero.getAtaque() - ataque1;
+        guerrero.setAtaque(ataque2);
     }
 }

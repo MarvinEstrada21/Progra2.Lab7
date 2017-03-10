@@ -1,12 +1,16 @@
 package marvinestrada_lab7;
-public class Guerrero {
+
+import java.io.Serializable;
+
+public abstract class Guerrero implements Serializable{
     private String nombre;
     private String nickname;
     private double ataque;
     private double defensa;
     private double salud;
     private double puntos;
-
+    private static final long SerialVersionUID = 777l;
+    
     public Guerrero() {
     }
 
@@ -71,4 +75,6 @@ public class Guerrero {
     public String toString() {
         return nombre;
     }
+    
+    public abstract void atacar(Guerrero guerrero); 
 }

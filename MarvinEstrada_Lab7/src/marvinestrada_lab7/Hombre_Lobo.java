@@ -15,7 +15,10 @@ public class Hombre_Lobo extends Bestias{
     }
 
     @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atacar(Guerrero guerrero) {
+        double vida_against, vida_against2;
+        vida_against = this.getAtaque() - guerrero.getDefensa();
+        vida_against2 = guerrero.getSalud() - vida_against;
+        guerrero.setSalud(vida_against2);
     }
 }

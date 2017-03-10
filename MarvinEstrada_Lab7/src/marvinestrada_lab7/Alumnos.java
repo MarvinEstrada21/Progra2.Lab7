@@ -43,4 +43,15 @@ public class Alumnos extends Guerrero{
     public String toString() {
         return super.toString();
     }
+
+    @Override
+    public void atacar(Guerrero guerrero) {
+        double against, resta, laif_al, porcentaje;
+        resta = this.getAtaque() - getDefensa();
+        against = getSalud() - resta;
+        setSalud(against);
+        porcentaje = this.getSalud() * 0.25;
+        laif_al = this.getSalud() + porcentaje;
+        this.setSalud(laif_al);
+    }
 }

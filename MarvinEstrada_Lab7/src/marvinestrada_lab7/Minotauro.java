@@ -15,7 +15,15 @@ public class Minotauro extends Bestias{
     }
 
     @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void atacar(Guerrero guerrero) {
+        double laif, laif2, porcentaje, suma, against, against2;
+        porcentaje = guerrero.getDefensa() * 0.50;
+        suma = guerrero.getDefensa() * porcentaje;
+        laif = (this.getAtaque() * 2) - suma;
+        laif2 = guerrero.getSalud() - laif;
+        guerrero.setSalud(laif2);
+        against = guerrero.getAtaque() * 0.10;
+        against2 = guerrero.getAtaque() * against;
+        guerrero.setAtaque(against2);
     }
 }
