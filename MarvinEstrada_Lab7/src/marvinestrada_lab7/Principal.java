@@ -839,6 +839,11 @@ public class Principal extends javax.swing.JFrame {
         jLabel48.setText("Edad:");
 
         bt_guardar_alumno1.setText("Guardar");
+        bt_guardar_alumno1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                bt_guardar_alumno1MouseClicked(evt);
+            }
+        });
         bt_guardar_alumno1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 bt_guardar_alumno1ActionPerformed(evt);
@@ -953,11 +958,21 @@ public class Principal extends javax.swing.JFrame {
         pp_alumnos.add(modificar_alumno);
 
         eliminar_alumno.setText("Eliminar");
+        eliminar_alumno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                eliminar_alumnoActionPerformed(evt);
+            }
+        });
         pp_alumnos.add(eliminar_alumno);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jButton1.setText("Guerreros");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Programar Batalla");
 
@@ -988,13 +1003,13 @@ public class Principal extends javax.swing.JFrame {
     private void bt_guardar_dragonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardar_dragonActionPerformed
         String nombre, nickaname;
         double ataque, defensa, salud, puntos;
-        try {
+        //try {
             nombre = tf_nombre_dragon.getText();
             nickaname = tf_nickname_dragon.getText();
             ataque = Double.parseDouble(tf_ataque_dragon.getText());
             defensa = Double.parseDouble(tf_defensa_dragon.getText());
             salud = Double.parseDouble(tf_salud_dragon.getText());
-            puntos = Double.parseDouble(tf_puntos_alumno.getText());
+            puntos = 0;
             lista.add(new Dragon(nombre, nickaname, ataque, defensa, salud, puntos));
             JOptionPane.showMessageDialog(this, "El dragon ha sido creado exitosamente");
             
@@ -1004,9 +1019,9 @@ public class Principal extends javax.swing.JFrame {
                                 Double.parseDouble(tf_ataque_dragon.getText()),
                                 Double.parseDouble(tf_defensa_dragon.getText()),
                                 Double.parseDouble(tf_salud_dragon.getText()),
-                                Double.parseDouble(tf_puntos_dragon.getText())};
+                                0};
             modelo.addRow(newrow);
-            tabla_alumno.setModel(modelo);
+            tabla_bestias.setModel(modelo);
             
             tf_nombre_dragon.setText("");
             tf_nickname_dragon.setText("");
@@ -1014,9 +1029,9 @@ public class Principal extends javax.swing.JFrame {
             tf_defensa_dragon.setText("");
             tf_salud_dragon.setText("");
             tf_puntos_dragon.setText("");
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, "Ha ocurrido un error y no se guardaron los datos");
-        }
+        //} catch (Exception e) {
+          //  JOptionPane.showMessageDialog(this, "Ha ocurrido un error y no se guardaron los datos");
+        //}
     }//GEN-LAST:event_bt_guardar_dragonActionPerformed
 
     private void bt_guardar_fenixActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardar_fenixActionPerformed
@@ -1040,7 +1055,7 @@ public class Principal extends javax.swing.JFrame {
                                 Double.parseDouble(tf_salud_fenix.getText()),
                                 Double.parseDouble(tf_puntos_fenix.getText())};
             modelo.addRow(newrow);
-            tabla_alumno.setModel(modelo);
+            tabla_bestias.setModel(modelo);
             
             tf_nombre_fenix.setText("");
             tf_nickname_fenix.setText("");
@@ -1074,7 +1089,7 @@ public class Principal extends javax.swing.JFrame {
                                 Double.parseDouble(tf_salud_hl.getText()),
                                 Double.parseDouble(tf_puntos_hl.getText())};
             modelo.addRow(newrow);
-            tabla_alumno.setModel(modelo);
+            tabla_bestias.setModel(modelo);
             
             tf_nombre_hl.setText("");
             tf_nickname_hl.setText("");
@@ -1108,7 +1123,7 @@ public class Principal extends javax.swing.JFrame {
                                 Double.parseDouble(tf_salud_minotauro.getText()),
                                 Double.parseDouble(tf_puntos_minotauro.getText())};
             modelo.addRow(newrow);
-            tabla_alumno.setModel(modelo);
+            tabla_bestias.setModel(modelo);
             
             tf_nombre_minotauro.setText("");
             tf_nickname_minotauro.setText("");
@@ -1200,20 +1215,20 @@ public class Principal extends javax.swing.JFrame {
         lista = new ArrayList();
         String nombre, nickaname;
         double ataque, defensa, salud, puntos;
-            nombre = tf_nombre_minotauro.getText();
-            nickaname = tf_nickname_minotauro.getText();
-            ataque = Double.parseDouble(tf_ataque_minotauro.getText());
-            defensa = Double.parseDouble(tf_defensa_minotauro.getText());
-            salud = Double.parseDouble(tf_salud_minotauro.getText());
-            puntos = Double.parseDouble(tf_puntos_minotauro.getText());
-            lista.add(new Guerrero(nombre, nickaname, ataque, defensa, salud, puntos));
-            Guerrero gu = new Guerrero();
-            gu.setNombre(nombre);
-            gu.setNickname(nickaname);
-            gu.setAtaque(ataque);
-            gu.setDefensa(defensa);
-            gu.setSalud(salud);
-            gu.setPuntos(puntos);
+        nombre = tf_nombre_bestia.getText();
+        nickaname = tf_nickname_bestia.getText();
+        ataque = Double.parseDouble(tf_ataque_bestia.getText());
+        defensa = Double.parseDouble(tf_defensa_bestia.getText());
+        salud = Double.parseDouble(tf_salud_bestia.getText());
+        puntos = Double.parseDouble(tf_puntos_bestia.getText());
+        lista.add(new Guerrero(nombre, nickaname, ataque, defensa, salud, puntos));
+        Guerrero gu = new Guerrero();
+        gu.setNombre(nombre);
+        gu.setNickname(nickaname);
+        gu.setAtaque(ataque);
+        gu.setDefensa(defensa);
+        gu.setSalud(salud);
+        gu.setPuntos(puntos);
     }//GEN-LAST:event_bt_guardar_dragon1MouseClicked
 
     private void eliminar_bestiaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_bestiaActionPerformed
@@ -1242,8 +1257,61 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_modificar_alumnoActionPerformed
 
     private void bt_guardar_alumno1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_guardar_alumno1ActionPerformed
-        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) tabla_alumno.getModel();
+        Object[] newrow = {tf_nombre_alumno.getText(),
+                            tf_nickname_alumno.getText(),
+                            Double.parseDouble(tf_ataque_alumno.getText()),
+                            Double.parseDouble(tf_defensa_alumno.getText()),
+                            Double.parseDouble(tf_salud_alumno.getText()),
+                            Double.parseDouble(tf_puntos_alumno.getText()),
+                            Integer.parseInt(tf_cuenta_alumno.getText()),
+                            tf_carrera_alumno.getText(),
+                            Integer.parseInt(tf_edad_alumno.getText())};
+        modelo.addRow(newrow);
+        tabla_alumno.setModel(modelo);
+        this.jd_modificar_alumno.setVisible(false);
     }//GEN-LAST:event_bt_guardar_alumno1ActionPerformed
+
+    private void bt_guardar_alumno1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_bt_guardar_alumno1MouseClicked
+        lista_alumnos = new ArrayList();
+        String nombre, nickaname, carrera;
+        double ataque, defensa, salud, puntos;
+        int cuenta, edad;
+        nombre = tf_nombre_alumno1.getText();
+        nickaname = tf_nickname_alumno1.getText();
+        ataque = Double.parseDouble(tf_ataque_alumno1.getText());
+        defensa = Double.parseDouble(tf_defensa_alumno1.getText());
+        salud = Double.parseDouble(tf_salud_alumno1.getText());
+        puntos = Double.parseDouble(tf_puntos_alumno1.getText());
+        cuenta = Integer.parseInt(tf_cuenta_alumno1.getText());
+        carrera  = tf_carrera_alumno1.getText();
+        edad = Integer.parseInt(tf_edad_alumno1.getText());
+        lista_alumnos.add(new Alumnos(cuenta, carrera, edad, nombre, nickaname, ataque, defensa, salud, puntos));
+        Alumnos al = new Alumnos();
+        al.setNombre(nombre);
+        al.setNickname(nickaname);
+        al.setAtaque(ataque);
+        al.setDefensa(defensa);
+        al.setSalud(salud);
+        al.setPuntos(puntos);
+        al.setCuenta(cuenta);
+        al.setCarrera(carrera);
+        al.setEdad(edad);
+    }//GEN-LAST:event_bt_guardar_alumno1MouseClicked
+
+    private void eliminar_alumnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminar_alumnoActionPerformed
+        DefaultTableModel modelo = (DefaultTableModel)tabla_alumno.getModel();
+        modelo.removeRow(tabla_alumno.getSelectedRow());
+        lista_alumnos.remove(tabla_alumno.getSelectedRowCount());
+        tabla_alumno.setModel(modelo);
+    }//GEN-LAST:event_eliminar_alumnoActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.jd_guerrero.setModal(true);
+        this.jd_guerrero.pack();
+        this.jd_guerrero.setLocationRelativeTo(this);
+        this.jd_guerrero.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public static void main(String args[]){
         /* Set the Nimbus look and feel */

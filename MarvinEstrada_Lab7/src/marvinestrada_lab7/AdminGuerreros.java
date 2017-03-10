@@ -9,8 +9,8 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
 public class AdminGuerreros {
-    ArrayList<Guerrero> lista_guerreros = new ArrayList();
-    File archivo = null;
+    private ArrayList<Guerrero> lista_guerreros = new ArrayList();
+    private File archivo = null;
 
     public AdminGuerreros(String path) {
         archivo = new File(path);
